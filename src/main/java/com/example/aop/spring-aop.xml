@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <bean id="login" class="com.example.aop.Login"/>
+        <bean id="count" class="com.example.aop.Count"/>
+
+        <aop:config>
+            <aop:aspect id="logaspect" ref="count"> <!-- 我把这个ref理解为切面的制造者，就是拥有advice的类 -->
+                <aop:pointcut id="loginpointcut" expression="execution(* com.example.aop.ILogin.login(..))"/>
+                <aop:before method="beforeuserlogin" pointcut-ref="loginpointcut"/>
+                <aop:after method="afteruserlogin" pointcut="execution(* com.example.aop.ILogin.login(..)) and args(user)"/>
+                <aop:around method="aroundlogout" pointcut="execution(* com.example.aop.ILogin.logout(..))"/>
+                <!-- 上面这一句等于下面这两句的综合 -->
+                <!--<aop:pointcut id="logoutpointcut" expression="execution(* com.example.aop.ILogin.logout(..))"/>-->
+                <!--<aop:around method="aroundlogout" pointcut-ref="logoutpointcut"/>-->
+                <aop:after-returning method="afterReturn" returning="s" pointcut="execution(* com.example.aop.ILogin.logout(..))"/>
+            </aop:aspect>
+        </aop:config>
+
+
+</beans>
