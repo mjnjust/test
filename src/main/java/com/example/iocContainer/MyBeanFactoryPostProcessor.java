@@ -15,7 +15,7 @@ public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
     public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
         BeanDefinition beanDefinition = configurableListableBeanFactory.getBeanDefinition("teacher");
         System.out.println("beanclassname before change:" + beanDefinition.getBeanClassName());
-        beanDefinition.setBeanClassName("com.example.iocContainer.Student");
+        beanDefinition.setBeanClassName("Student");
         System.out.println("beanclassname after change:"+beanDefinition.getBeanClassName());
     }
 }

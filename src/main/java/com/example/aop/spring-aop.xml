@@ -15,7 +15,7 @@
                 <aop:after method="afteruserlogin" pointcut="execution(* com.example.aop.ILogin.login(..)) and args(user)"/>
                 <aop:around method="aroundlogout" pointcut="execution(* com.example.aop.ILogin.logout(..))"/>
                 <!-- 上面这一句等于下面这两句的综合 -->
-                <!--<aop:pointcut id="logoutpointcut" expression="execution(* com.example.aop.ILogin.logout(..))"/>-->
+                <!--<aop:pointcut id="logoutpointcut" expression="execution(* ILogin.logout(..))"/>-->
                 <!--<aop:around method="aroundlogout" pointcut-ref="logoutpointcut"/>-->
                 <aop:after-returning method="afterReturn" returning="s" pointcut="execution(* com.example.aop.ILogin.logout(..))"/>
             </aop:aspect>

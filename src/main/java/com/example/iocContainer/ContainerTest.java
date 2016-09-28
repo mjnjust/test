@@ -1,7 +1,6 @@
 package com.example.iocContainer;
 
 import com.example.aop.ILogin;
-import com.example.aop.Login;
 import com.example.aop.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
