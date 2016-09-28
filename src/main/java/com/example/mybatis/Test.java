@@ -21,9 +21,13 @@ public class Test {
         }
         SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sessionFactory.openSession();
-        Xxtest xtest = new Xxtest();
-        xtest.setName("test1");
-        sqlSession.insert("test.addTest",xtest);
+//        Xxtest xtest = new Xxtest();
+//        xtest.setName("test1");
+//        sqlSession.insert("test.addTest",xtest);
+//        sqlSession.commit();
+        Usera usera = new Usera();
+        usera.setName("admin");
+        sqlSession.insert("usera.addUsera",usera);
         sqlSession.commit();
     }
 }
